@@ -1,0 +1,233 @@
+.workspace-layout {
+  min-height: 100svh;
+  color: #202722;
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(222, 232, 207, 0.48), transparent 48%),
+    #f8f9f5;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  text-align: left;
+}
+
+.workspace-header {
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid #e4e9e2;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  width: min(100% - 56px, 1160px);
+  min-height: 76px;
+  margin-inline: auto;
+}
+
+.workspace-brand {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 10px;
+  color: #202722;
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.workspace-brand-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 11px 11px 11px 4px;
+  color: #fff;
+  background: #285c46;
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1;
+}
+
+.workspace-nav {
+  display: flex;
+  align-self: stretch;
+  gap: 8px;
+  margin-left: 54px;
+}
+
+.workspace-nav a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  color: #747c75;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.workspace-nav a:hover,
+.workspace-nav a.active {
+  color: #285c46;
+}
+
+.workspace-nav a.active::after {
+  position: absolute;
+  right: 14px;
+  bottom: -1px;
+  left: 14px;
+  height: 2px;
+  background: #4c805e;
+  content: '';
+}
+
+.workspace-account {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: auto;
+}
+
+.account-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.account-avatar {
+  display: grid;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid #d8e3d3;
+  border-radius: 50%;
+  color: #285c46;
+  background: #edf3e8;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.account-details {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}
+
+.account-name {
+  max-width: 160px;
+  overflow: hidden;
+  color: #313a33;
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-caption {
+  color: #8b938b;
+  font-size: 10px;
+}
+
+.logout-button {
+  padding: 8px 12px;
+  border: 1px solid #e0e6de;
+  border-radius: 5px;
+  color: #58635a;
+  background: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.logout-button:hover:not(:disabled) {
+  border-color: #b9cbb8;
+  color: #285c46;
+  background: #f7faf5;
+}
+
+.logout-button:focus-visible,
+.workspace-nav a:focus-visible,
+.workspace-brand:focus-visible {
+  outline: 3px solid rgba(64, 117, 84, 0.22);
+  outline-offset: 3px;
+}
+
+.logout-button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.logout-error {
+  padding: 0 28px 10px;
+  color: #a43e37;
+  font-size: 12px;
+  text-align: right;
+}
+
+.workspace-content {
+  width: min(100% - 56px, 1160px);
+  margin: 0 auto;
+  padding: 48px 0 72px;
+  animation: workspace-enter 360ms ease-out both;
+}
+
+@keyframes workspace-enter {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 700px) {
+  .navbar-inner {
+    width: calc(100% - 32px);
+    min-height: 68px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 0;
+    padding-top: 12px;
+  }
+
+  .workspace-nav {
+    order: 3;
+    width: 100%;
+    height: 43px;
+    margin-left: -12px;
+  }
+
+  .workspace-nav a {
+    padding-inline: 12px;
+  }
+
+  .workspace-account {
+    gap: 10px;
+  }
+
+  .account-details {
+    display: none;
+  }
+
+  .logout-button {
+    padding: 7px 9px;
+  }
+
+  .workspace-content {
+    width: calc(100% - 36px);
+    padding-top: 32px;
+  }
+
+  .workspace-layout:has(.tasks-page) .workspace-content {
+    padding-bottom: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workspace-content {
+    animation: none;
+  }
+}

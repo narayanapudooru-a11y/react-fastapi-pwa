@@ -1,0 +1,14 @@
+[project]
+name = "react-fastapi-pwa"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi>=0.141.1",
+    "passlib[bcrypt]>=1.7.4",
+    "psycopg2-binary>=2.9.13",
+    "python-jose>=3.5.0",
+    "sqlalchemy>=2.1.1",
+    "uvicorn>=0.54.0",
+]
